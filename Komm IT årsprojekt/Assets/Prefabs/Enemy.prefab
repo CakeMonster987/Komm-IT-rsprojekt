@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6304b0356d8b00047b3ef1cf95600b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  currentTarget: {fileID: 2983910168795915034, guid: 3704a997f3d304342a8ec37de44be1fe, type: 3}
+  Player: {fileID: 2983910168795915034, guid: 3704a997f3d304342a8ec37de44be1fe, type: 3}
   Bog: {fileID: 4873522058208174058, guid: c3df13de9b3327543894d4bfc84358a1, type: 3}
 --- !u!50 &3033762278240787229
 Rigidbody2D:

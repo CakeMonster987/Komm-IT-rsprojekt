@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    Transform currentTarget;
-    public Transform Player;
-    private WaitForSeconds waitForSeconds;
-
+    public Transform currentTarget;
 
     Rigidbody2D rb;
     private float Speed = 4f;
     private float ShootingRange = 7f;
     public GameObject Bog;
 
-    private int hp = 2;
+    private int hp = 4;
     private float Timer;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
-        currentTarget = Player;
+        //currentTarget = Player;
 
-        hp = 4;
 
     }
 
@@ -32,18 +28,18 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         Timer += Time.deltaTime;
-
         Vector3 direction = currentTarget.position - transform.position;
         direction.Normalize();
         GetComponent<Rigidbody2D>().velocity = direction * Speed;
+        Debug.Log("Direction: " + direction);
 
 
-        if (Vector3.Distance(transform.position, Player.position) < 99999)
+        if (Vector3.Distance(transform.position, currentTarget.position) < 99999)
         {
-            currentTarget = Player;
+           // currentTarget = Player;
         }
 
-        if (Vector3.Distance(transform.position, Player.position) < ShootingRange)
+        if (Vector3.Distance(transform.position, currentTarget.position) < ShootingRange)
         {
             if (Timer > 1.3f)
             {
@@ -58,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
     private void Shoot()
     {
         GameObject tempBullet = Instantiate(Bog, transform.position, Quaternion.identity);
-        Vector3 tempTarget = Player.position;
+        Vector3 tempTarget = currentTarget.position;
         tempTarget.z = 0;
         tempBullet.GetComponent<Bulletscript>().Target = tempTarget;
 

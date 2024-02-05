@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private float MinSpawnTime;
+    [SerializeField] private float MaxSpawnTime;
+    private float TimeUntilSpawn;
+
+    void Awake()
     {
-        
+        SetTimeUntillSpawn();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        TimeUntilSpawn -= Time.deltaTime;
+        if(TimeUntilSpawn <= 0)
+        {
+            Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+            SetTimeUntillSpawn();
+        }
+    }
+
+    private void SetTimeUntillSpawn()
+    {
+        TimeUntilSpawn = Random.Range(MinSpawnTime, MaxSpawnTime);
     }
 }
