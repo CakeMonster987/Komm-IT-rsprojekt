@@ -15,5 +15,11 @@ public class PlayerBulletScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (CompareTag("Fjende"))
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

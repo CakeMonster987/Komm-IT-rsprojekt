@@ -7,8 +7,8 @@ public class EnemyMovement : MonoBehaviour
     public Transform currentTarget;
 
     Rigidbody2D rb;
-    private float Speed = 4f;
-    private float ShootingRange = 7f;
+    private float Speed = 30f;
+    private float ShootingRange = 9999999999999999999999f;
     public GameObject Bog;
 
     private int hp = 4;
@@ -31,13 +31,6 @@ public class EnemyMovement : MonoBehaviour
         Vector3 direction = currentTarget.position - transform.position;
         direction.Normalize();
         GetComponent<Rigidbody2D>().velocity = direction * Speed;
-        Debug.Log("Direction: " + direction);
-
-
-        if (Vector3.Distance(transform.position, currentTarget.position) < 99999)
-        {
-           // currentTarget = Player;
-        }
 
         if (Vector3.Distance(transform.position, currentTarget.position) < ShootingRange)
         {

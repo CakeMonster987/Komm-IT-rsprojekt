@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bulletscript : MonoBehaviour
 {
     public Vector3 Target = Vector3.zero;
-    public float Speed = 7f;
+    public float Speed = 25f;
     Vector3 direction;
 
 
@@ -34,5 +34,12 @@ public class Bulletscript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if(CompareTag("Player"))
+        {
+            Debug.Log("Ramt spiller");
+        }
+
     }
+
 }

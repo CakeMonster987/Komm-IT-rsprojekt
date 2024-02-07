@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float Speed = 7f;
+    private float Speed = 40f;
     [SerializeField] Rigidbody2D rb;
     private Vector2 moveInput;
     int HP = 3;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
-        if(moveInput.magnitude > 0.6f)
+        if (moveInput.magnitude > 0.6f)
         {
             PlayerShooting.LookDirection = moveInput;
         }
@@ -34,9 +34,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        Debug.Log(HP);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (CompareTag("Bog"))
         {
@@ -45,3 +46,4 @@ public class PlayerMovement : MonoBehaviour
     }
 
 }
+    

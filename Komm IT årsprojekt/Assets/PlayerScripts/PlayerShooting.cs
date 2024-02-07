@@ -6,7 +6,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public static Vector2 LookDirection;
     public GameObject Bullet;
-    float BulletSpeed = 8f;
+    float BulletSpeed = 25f;
 
     // Start is called before the first frame update
     void Start()
