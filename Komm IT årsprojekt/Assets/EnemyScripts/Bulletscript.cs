@@ -22,4 +22,17 @@ public class Bulletscript : MonoBehaviour
         transform.position += direction * Time.deltaTime * Speed;
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (CompareTag("Væg"))
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (CompareTag("PlayerBull"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

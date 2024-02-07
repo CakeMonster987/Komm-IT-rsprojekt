@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     int HP = 3;
 
+    //public GameObject Bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
+        if(moveInput.magnitude > 0.6f)
+        {
+            PlayerShooting.LookDirection = moveInput;
+        }
         rb.velocity = moveInput * Speed;
 
         if (HP == 0)
